@@ -1,4 +1,4 @@
-# doctornpm
+# Nacre Documentation
 
 Did somebody call a doctor?  doctornpm is a friendly fork of the
 [doctocat](https://github.com/primer/doctocat) Gatsby theme from
