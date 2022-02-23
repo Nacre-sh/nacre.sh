@@ -20,7 +20,7 @@ export const HEADER_HEIGHT = 66
 
 const NpmHeaderBar = styled(Box)`
   height: 10px;
-  background-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff);
+  background-image: linear-gradient(139deg, #333333, #ffffff, #333333);
 `
 
 function Header({location, isSearchEnabled = true}) {

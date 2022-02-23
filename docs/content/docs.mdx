@@ -1,0 +1,683 @@
+---
+title: Documentation - Version Alpha
+---
+
+Welcome to the official API reference of Nacre documentation.
+
+**Current version: Alpha**
+
+## Builtins
+
+Bultins are commands available natively in Nacre. They don't need to be imported and can be used right away.
+
+### cat
+
+```js
+cat(filepath): string
+```
+
+Returns the content of the file in string format (utf-8).
+
+Example:
+```js
+> cat('foo.txt')
+'this a file\nwith text in it'
+```
+
+<hr/>
+
+```js
+cat(filepath): string[]
+```
+
+Returns the content of the file in string format (utf-8) split by line.
+
+Example:
+```js
+> cat('foo.txt')
+['this a file', 'with text in it']
+```
+
+<hr/>
+
+```js
+cat.truncated(filepath, string): string
+```
+
+Write `string` content in the `filepath` file. The file is created (if it does not exist) or truncated (if it exists).
+
+Returns the content of the file (`string`).
+
+<hr/>
+
+```js
+cat.append(filepath, string): string
+```
+
+Append `string` content to the `filepath` file. The file is created if it does not exist.
+
+Returns the content of the file.
+
+### cd
+
+```js
+cd(): string
+```
+
+Alias of `cd.home()`;
+
+<hr/>
+
+```js
+cd(path: string): string
+```
+
+The method changes the current working directory of the Node.js process to `path` or throws an exception if doing so fails (for instance, if the specified directory does not exist).
+
+Returns the new current directory.
+
+<hr/>
+
+```js
+cd.home(): string
+```
+
+The method changes the current working directory of the Node.js process to your home directory defined by NodeJS `os.homedir()`.
+
+Returns the new current directory.
+
+<hr/>
+
+```js
+cd.previous(): string
+```
+
+The method changes the current working directory of the Node.js process to your previous directory. Similar to `cd -` in Bash.
+
+Returns the new current directory.
+
+### chmod
+
+```js
+chmod(itemPath): object
+```
+
+Returns the permissions of the `itemPath` item.
+
+Example:
+```js
+> chmod('foo')
+{
+  user: { read: true, write: true, execute: false },
+  group: { read: true, write: false, execute: false },
+  others: { read: true, write: false, execute: false }
+}
+```
+
+<hr/>
+
+```js
+chmod.add(itemPath): object
+```
+
+Adds read, write and execution permissions to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.read(itemPath): object
+```
+
+Adds read permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.read.user(itemPath): object
+```
+
+Adds read permission to user.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.read.group(itemPath): object
+```
+
+Adds read permission to group.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.read.others(itemPath): object
+```
+
+Adds read permission to others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.write(itemPath): object
+```
+
+Adds write permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.write.user(itemPath): object
+```
+Adds write permission to user.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.write.group(itemPath): object
+```
+
+Adds write permission to group.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.write.others(itemPath): object
+```
+
+Adds write permission to others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.execute(itemPath): object
+```
+
+Adds execution permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.execute.user(itemPath): object
+```
+
+Adds execution permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.execute.group(itemPath): object
+```
+
+Adds execution permission to group.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.add.execute.others(itemPath): object
+```
+
+Adds execution permission to others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove(itemPath): object
+```
+
+Removes read, write and execution permissions to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.read(itemPath): object
+```
+
+Removes read permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.read.user(itemPath): object
+```
+
+Removes read permission to user.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.read.group(itemPath): object
+```
+
+Removes read permission to group.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.read.others(itemPath): object
+```
+
+Removes read permission to others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.write(itemPath): object
+```
+
+Removes write permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.write.user(itemPath): object
+```
+Removes write permission to user.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.write.group(itemPath): object
+```
+
+Removes write permission to group.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.write.others(itemPath): object
+```
+
+Removes write permission to others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.execute(itemPath): object
+```
+
+Removes execution permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.execute.user(itemPath): object
+```
+
+Removes execution permission to user, group and others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.execute.group(itemPath): object
+```
+
+Removes execution permission to group.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.remove.execute.others(itemPath): object
+```
+
+Removes execution permission to others.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set(itemPath, perm): object
+```
+
+Sets `perm` permissions.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.read(itemPath): object
+```
+
+Sets read permission to user, group and others. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.read.user(itemPath): object
+```
+
+Sets read permission to user. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.read.group(itemPath): object
+```
+
+Sets read permission to group. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.read.others(itemPath): object
+```
+
+Sets read permission to others. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.write(itemPath): object
+```
+
+Sets write permission to user, group and others. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.write.user(itemPath): object
+```
+Removes write permission to Sets. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.write.group(itemPath): object
+```
+
+Sets write permission to group. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.write.others(itemPath): object
+```
+
+Sets write permission to others. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.execute(itemPath): object
+```
+
+Sets execution permission to user, group and others. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.execute.user(itemPath): object
+```
+
+Sets execution permission to user, group and others. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.execute.group(itemPath): object
+```
+
+Sets execution permission to group. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+<hr/>
+
+```js
+chmod.set.execute.others(itemPath): object
+```
+
+Sets execution permission to others. Removes permissions to the rest.
+
+Returns the permissions of the `itemPath` item.
+
+### chown
+
+```js
+chown(itemPath): object
+```
+
+Returns the owner and group of the `itemPath` item.
+
+Example:
+```js
+> chown('foo')
+{ owner: 'john', group: 'staff' }
+```
+
+<hr/>
+
+```js
+chown.get(itemPath): object
+```
+
+Alias to `chown()`.
+
+<hr/>
+
+```js
+chown.set(itemPath, username, groupname): object
+```
+
+Set the owner and group of the `itemPath` item with `username` and `groupname`.
+
+Returns the owner and group of the `itemPath` item.
+
+<hr/>
+
+```js
+chown.set.owner(itemPath, username): object
+```
+
+Set the owner of the `itemPath` item with `username`.
+
+Returns the owner and group of the `itemPath` item.
+
+<hr/>
+
+```js
+chown.set.group(itemPath, groupname): object
+```
+
+Set the group of the `itemPath` item with `groupname`.
+
+Returns the owner and group of the `itemPath` item.
+
+### grep
+
+```js
+grep(regex): function
+```
+
+Shortcut of the RegExp test function allowing the code below:
+```js
+> ['foo', 'bar', 'noodle'].filter(e => /oo/.test(e))
+[ 'foo', 'noodle' ]
+```
+to be written this way:
+```js
+> ['foo', 'bar', 'noodle'].filter(grep(/oo/))
+[ 'foo', 'noodle' ]
+```
+
+### ls
+
+```js
+ls(): string[]
+```
+
+Returns the items of the working directory.
+
+<hr/>
+
+```js
+ls(dirpath: string): string[]
+```
+
+Returns the items of the `dirpath` directory.
+
+Note that unlike traditional `ls`, it will fail if you give a file path in parameter. This is to distinguish a directory from a file within the directory (ex: foo vs foo/foo).
+
+<hr/>
+
+```js
+ls.recursive(dirpath: string): string[]
+```
+
+Returns the items of the `dirpath` directory and subdirectories.
+
+### mkdir
+
+```js
+mkdir(dirpath: string): string
+```
+
+Synchronously creates a directory.
+
+Returns the dirpath of the created directory.
+
+<hr/>
+
+```js
+mkdir.recursive(dirpath: string): string
+```
+
+Synchronously creates a directory and the intermediate directories if necessary.
+
+Returns the dirpath of the created directory.
+
+### pwd
+
+```js
+pwd(): string
+```
+
+Returns the current working directory. Alias of NodeJS `process.cwd()`.
+
+### stat
+
+```js
+stat(itemPath): object
+```
+
+Returns the information of the given item. Example:
+
+```js
+> stat('myDir')
+{
+    name: 'myDir',
+    type: 'directory',
+    size: 160,
+    createdAt: 2022-02-10T10:20:52.844Z,
+    modifiedAt: 2022-02-10T10:20:52.844Z,
+    owner: 'me',
+    group: 'staff'
+  }
+```
+
+### touch
+
+```js
+touch(itemPath): string
+```
+
+Sets the modification and access times of the item located at `itemPath`. If the item does not exist, it creates an empty file at the `itemPath` location.
+
+Returns the location of the item.
+
+## Shortcuts
+
+Nacre uses NodeJS readline, some shortcuts are [defined there](https://nodejs.org/api/readline.html) too.
+
+| Shortcut | Description |
+| -------- | ----------- |
+| `<ctrl> + C` | Quit Nacre / Remove the current line |
+| `<ctrl> + H` | Delete previous character |
+| `<ctrl> + U` | Delete from the current cursor to the line start |
+| `<ctrl> + K` | Delete from the current cursor to the line end |
+| `<ctrl> + A` | Move the cursor to the begining of the line |
+| `<ctrl> + E` | Move the cursor to the end of the line |
+| `<ctrl> + B` | Move the cursor back one character |
+| `<ctrl> + F` | Move the cursor forward one character |
+| `<ctrl> + L` | Clear the screen of the terminal |
+| `<ctrl> + N` | Next history item |
+| `<ctrl> + P` | Previous history item |
+| `<ctrl> + W` | Delete previous word |
+| `<ctrl> + <delete>` | Delete next word |
+| `<alt> + <righ arrow>` | Move the cursor forward one word |
+| `<alt> + <left arrow>` | Move the cursor back one word |
+| `<ctrl> + R` | [Search backward in the history](https://www.gnu.org/software/bash/manual/html_node/Searching.html) |
+| `<up arrow>` | Next history item |
+| `<down arrow>` | Previous history item |
+
+**Note**: on a mac keyboard, what we call `<delete>` is `<suppr>` and can be done pressing `<fn> + <delete>`

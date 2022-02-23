@@ -1,16 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: 'doctornpm',
-    shortName: 'doctornpm',
-    description: 'Like doctocat, but for npm',
+    title: 'Nacre',
+    shortName: 'nacre',
+    description: 'Intuitive Shell',
     lang: 'en',
-    imageUrl: 'https://user-images.githubusercontent.com/29712634/81721690-e2fb5d80-9445-11ea-8602-4b2294c964f3.png',
+    imageUrl: 'https://user-images.githubusercontent.com/11426226/153443520-b4712899-cd91-4474-9a60-c39e8cb2ec7d.svg',
   },
   plugins: [
     {
       resolve: 'gatsby-theme-doctornpm',
       options: {
-        icon: './src/images/npm-favicon.png',
+        icon: './src/images/nacre-favicon.svg',
         editOnGitHub: false,
         showContributors: false,
         repo: {

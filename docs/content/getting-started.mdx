@@ -1,0 +1,209 @@
+---
+title: Getting Started
+---
+
+Welcome! Nacre is an open source **object-oriented shell** leveraging the full potential of **JavaScript** for those who prefer to work with objects rather than text.
+
+This guide will help you to understand the fundamental principles of Nacre.
+
+## Installation
+
+Nacre relies on NodeJS so you must have it installed on your system. Follow their [installation instructions](https://nodejs.org/). Once this is done, install it using:
+
+```shell
+$ npm install --global nacre
+```
+
+## Interactive
+
+### List directory
+
+To launch a nacre shell, simply run:
+
+```shell
+$ nacre
+```
+
+A prompt will invite you to run commands interactively. Try listing the content of the working directory by running `ls()`:
+
+```js
+Nacre (Node.js 16.13.1 - V8 9.4.146.24-node.14)
+> ls()
+[
+  '.git',
+  '.gitignore',
+  '.idea',
+  'LICENSE',
+  'README.md',
+  'docs',
+  'gatsby-theme-doctornpm',
+  'node_modules',
+  'package-lock.json',
+  'package.json'
+]
+```
+
+You may notice that `ls()` command, unlike `ls` on more traditional shells, requires parentheses to display items in the current working directory. The reason is simple, Nacre is empowered by NodeJS, which means everything you write must follow the JavaScript syntaxe.
+
+Without parentheses, `ls` returns a value of type function:
+
+```js
+> ls
+[Function: ls] {
+  help: 'List directory',
+  recursive: [Function (anonymous)] { help: 'List directory recursively' }
+}
+```
+
+This is particulary handy to understand what you can do with a command. In this case, it tells us that `ls` has a `recursive()` function.
+
+```js
+> ls.recursive()
+[
+  'components',
+  'components/index-component.mdx',
+  'components/index.mdx',
+  'components/variant-select.mdx',
+  'configuration',
+  'configuration/header-links.mdx',
+  'configuration/index.mdx',
+  'configuration/navigation.mdx',
+  'configuration/plugin.mdx',
+  'getting-started.mdx',
+  'index.mdx'
+]
+```
+
+### Get file information
+
+ Nacre provides a bunch of builtins such as `ls()`, `cd()`, `stat()`, `pwd()`, etc. with names similar to those of traditional shells so you can quickly find your marks. You may know that `stat()` returns some information about a file, let's try it:
+
+```js
+> stat('index.mdx')
+{
+  name: 'index.mdx',
+  type: 'file',
+  size: 844,
+  createdAt: 2022-02-10T10:20:52.844Z,
+  modifiedAt: 2022-02-12T09:48:15.158Z,
+  owner: 'arnauddebec',
+  group: 'staff'
+}
+```
+
+### Combine commands
+
+If you are not familiar with `map()`, this is a JavaScript method which creates a new array populated with the results of calling a provided function on every element in the calling array. Let's take an example:
+
+```js
+const myArray = [1, 2, 3, 4];
+
+// for each element of the array, we multiply the element by 2
+const result = myArray.map((element) => { return element * 2 });
+
+// expected result: Array [1, 4, 6, 8]
+console.log(result);
+```
+
+You know that `ls()` list the items of directory and that `stat()` displays information about an item. Let's combine them using `map()`:
+
+```js
+// for each element of the array, we apply the stat function on it
+> ls.map((element) => { return stat(element) })
+
+// or simply
+> ls.map(stat)
+[
+  {
+    name: 'components',
+    type: 'directory',
+    size: 160,
+    createdAt: 2022-02-10T10:20:52.844Z,
+    modifiedAt: 2022-02-10T10:20:52.844Z,
+    owner: 'arnauddebec',
+    group: 'staff'
+  },
+  {
+    name: 'index-component.mdx',
+    type: 'file',
+    size: 383,
+    createdAt: 2022-02-10T10:20:52.844Z,
+    modifiedAt: 2022-02-10T10:20:52.844Z,
+    owner: 'arnauddebec',
+    group: 'staff'
+  },
+  {
+    name: 'index.mdx',
+    type: 'file',
+    size: 154,
+    createdAt: 2022-02-10T10:20:52.844Z,
+    modifiedAt: 2022-02-10T10:20:52.844Z,
+    owner: 'arnauddebec',
+    group: 'staff'
+  },
+  ...
+}
+```
+
+This a typical example on how you can leverage JavaScript's language and functions. Here is a last example, can you guess what it does?
+
+```js
+> ls.recursive().filter((e) => e.endsWith('.js')).map(stat).filter(s => s.size > 100).map(e => e.name)
+```
+
+Such long line becomes hard to read, you may prefer to write your code in a proper Integrated Development Environment (IDE) for nicer indentation and autocompletion. The next section will guide you on how to execute Nacre scripts.
+
+## Scripting
+
+You can save your script in file like you would do for a normal JavaScript file. In your preferred IDE, create `print-files.js`.
+
+```js
+#!/usr/bin/env nacre
+
+'use strict';
+
+/**
+ * This is a file which demonstrates that nacre can also run a script file like NodeJS!
+ */
+
+// get the list of all items in the current directory and sub directories
+const everyone = ls.recursive();
+
+// filter all items to get only the files
+const onlyFiles = everyone.filter(item => {
+  const info = stat(item);
+  return info.type === 'file';
+});
+
+// will print the list of files
+console.log('list of all files:', onlyFiles);
+
+// filter all files to get only those that ends with .js
+const onlyJs = onlyFiles.filter((f) => f.endsWith('.js'));
+
+// will print the list of js files
+console.log('list of all JavaScript files:',onlyJs);
+```
+
+To run it (from bash):
+```shell
+$ nacre print-files.js
+```
+
+Or directly (from bash):
+```shell
+$ chmod +x ./print-file.js # adds permission to execute
+$ ./print-file.js
+```
+
+## Shortcuts
+
+Those following shortcuts can save you some precious time. The exhaustive list of shortcuts can be found in the [documentation](docs#shortcuts).
+
+| Shortcut | Description |
+| ----------- | ----------- |
+| `<ctrl> + C` | Quit Nacre / Remove the current line |
+| `<ctrl> + A` | Move the cursor to the begining of the line |
+| `<ctrl> + E` | Move the cursor to the end of the line |
+| `<ctrl> + L` | Clear the screen of the terminal |
+| `<ctrl> + R` | [Search backward in the history](https://www.gnu.org/software/bash/manual/html_node/Searching.html) |

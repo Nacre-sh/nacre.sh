@@ -18,7 +18,15 @@ function Head(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
-
+      <script async src='https://www.googletagmanager.com/gtag/js?id=UA-221877909-1'></script>
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-221877909-1');
+        `}
+      </script>
       <html lang={lang} />
     </Helmet>
   )
