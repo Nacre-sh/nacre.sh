@@ -4,13 +4,13 @@ This repository contains the documentation for Nacre. Running with Gatsby, it is
 
 ## Prerequisites
 
-Prerequisites: [Node.js](https://nodejs.org/en/) (LTS) and [npm 7](https://github.com/npm/cli).
+Prerequisites: [Node.js 17.X](https://nodejs.org/en/) and [npm 7](https://github.com/npm/cli).
 
 **npm 7 is a requirement** since this repository uses workspaces.
 
 ## Getting Started
 
-1. Clone this repository: `git clone https://github.com/Ninroot/nacre.sh`.
+1. Clone this repository: `git clone https://github.com/Nacre-sh/nacre`.
 2. `npm install` in the `nacre.sh` directory.
 3. `npm run develop` to build the site and start a local webserver.
 4. Visit the documentation site in your local instance, http://localhost:8000/
