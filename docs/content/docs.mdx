@@ -4,8 +4,6 @@ title: Documentation - Version Alpha
 
 Welcome to the official API reference of Nacre documentation.
 
-**Current version: Alpha**
-
 ## Builtins
 
 Bultins are commands available natively in Nacre. They don't need to be imported and can be used right away.
@@ -97,6 +95,8 @@ The method changes the current working directory of the Node.js process to your 
 Returns the new current directory.
 
 ### chmod
+
+**Not available on Windows.**
 
 ```js
 chmod(itemPath): object
@@ -503,6 +503,8 @@ Returns the permissions of the `itemPath` item.
 
 ### chown
 
+**Not available on Windows.**
+
 ```js
 chown(itemPath): object
 ```
@@ -623,6 +625,25 @@ pwd(): string
 ```
 
 Returns the current working directory. Alias of NodeJS `process.cwd()`.
+
+### sh
+
+**Not available on Windows.**
+
+```js
+sh(command): string
+```
+
+Executes the command given in argument and returns its output. Example:
+
+```js
+> sh('ls -l')
+'total 88\n' +
+  '-rw-r--r--   1 ninroot  staff     87 Mar 24 18:23 README.md\n' +
+  '-rwxr--r--   1 ninroot  staff     19 Mar 24 21:34 myscript.sh\n' +
+  'drwxr-xr-x  35 ninroot  staff   1120 Mar 25 02:37 node_modules\n' +
+  '-rw-r--r--   1 ninroot  staff     74 Mar 25 02:37 package.json\n'
+```
 
 ### stat
 

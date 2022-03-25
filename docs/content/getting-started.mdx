@@ -8,7 +8,7 @@ This guide will help you to understand the fundamental principles of Nacre.
 
 ## Installation
 
-Nacre relies on NodeJS so you must have it installed on your system. Follow their [installation instructions](https://nodejs.org/). Once this is done, install it using:
+Nacre relies on **NodeJS version 17** so you must have it installed on your system. Follow their [installation instructions](https://nodejs.org/). Once this is done, install it using:
 
 ```shell
 $ npm install --global nacre
@@ -16,18 +16,20 @@ $ npm install --global nacre
 
 ## Interactive
 
-### List directory
-
 To launch a nacre shell, simply run:
 
 ```shell
 $ nacre
 ```
 
-A prompt will invite you to run commands interactively. Try listing the content of the working directory by running `ls()`:
+A prompt will invite you to run commands interactively.
+
+### List directory
+
+List the content of the working directory by running `ls()`:
 
 ```js
-Nacre (Node.js 16.13.1 - V8 9.4.146.24-node.14)
+Welcome to Nacre version Alpha. Find help at https://nacre.sh.
 > ls()
 [
   '.git',
@@ -43,7 +45,7 @@ Nacre (Node.js 16.13.1 - V8 9.4.146.24-node.14)
 ]
 ```
 
-You may notice that `ls()` command, unlike `ls` on more traditional shells, requires parentheses to display items in the current working directory. The reason is simple, Nacre is empowered by NodeJS, which means everything you write must follow the JavaScript syntaxe.
+You may notice that `ls()` command, unlike `ls` on more traditional shells, requires parentheses to display items in the current working directory. The reason is simple, Nacre is empowered by NodeJS, which means everything you write must follow the [JavaScript syntaxe](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 Without parentheses, `ls` returns a value of type function:
 
@@ -55,7 +57,7 @@ Without parentheses, `ls` returns a value of type function:
 }
 ```
 
-This is particulary handy to understand what you can do with a command. In this case, it tells us that `ls` has a `recursive()` function.
+This is particulary handy to understand to inspect the command and understand what you can do with it. In this case, it tells us that `ls` has a `recursive()` function.
 
 ```js
 > ls.recursive()
@@ -194,6 +196,34 @@ Or directly (from bash):
 ```shell
 $ chmod +x ./print-file.js # adds permission to execute
 $ ./print-file.js
+```
+
+## Module importation
+
+### Auto-require
+
+In the interactive mode, a module is automatically loaded when you type its name. Note that the module must be installed at a global level or in the current working directory.
+
+Usage local auto-require:
+```js
+// install chalk module in the current working directory
+npm.install('chalk')
+chalk.blue('hello')
+```
+
+Usage global auto-require:
+```js
+// install lodash module at a global level
+sh('npm install --global lodash')
+lodash.random();
+```
+
+### Require
+
+Use `require` to explicitly import a command.
+
+```js
+> const myScript = require(path.resolve('./myScript.js'))
 ```
 
 ## Shortcuts
