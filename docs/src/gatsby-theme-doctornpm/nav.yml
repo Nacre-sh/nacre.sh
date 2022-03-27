@@ -2,5 +2,10 @@
   url: /getting-started
 - title: Documentation
   url: /docs
+- title: Blog
+  url: /blog
+  children:
+  - title: Try Before the Beta Starts
+    url: /blog/2022-03-27-try-before-the-beta-starts
 - title: Contact
   url: /contact
