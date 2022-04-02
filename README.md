@@ -4,9 +4,9 @@ This repository contains the documentation for Nacre. Running with Gatsby, it is
 
 ## Prerequisites
 
-Prerequisites: [Node.js 17.X](https://nodejs.org/en/) and [npm 7](https://github.com/npm/cli).
+Prerequisites: [Node.js](https://nodejs.org/en/) (LTS) and [npm 8](https://github.com/npm/cli).
 
-**npm 7 is a requirement** since this repository uses workspaces.
+**npm 8 is a requirement** since this repository uses workspaces. If you don't have npm 8 yet, you can `npm install -g npm@latest`.
 
 ## Getting Started
 

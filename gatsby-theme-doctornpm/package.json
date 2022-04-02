@@ -1,15 +1,21 @@
 {
   "name": "gatsby-theme-doctornpm",
   "repository": {
-    "url": "npm/gatsby-theme-doctornpm",
+    "url": "https://github.com/npm/doctornpm",
     "directory": "gatsby-theme-doctornpm"
   },
-  "version": "1.8.0",
+  "version": "1.9.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "test": "jest"
   },
+  "files": [
+    "src",
+    "!src/**/__tests__/",
+    "gatsby-*.js",
+    "index.js"
+  ],
   "devDependencies": {
     "gatsby": "^2.32.11",
     "react": "^16.9.0",

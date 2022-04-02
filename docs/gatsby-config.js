@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
     title: 'Nacre',
@@ -13,12 +15,14 @@ module.exports = {
         icon: './src/images/nacre-favicon.svg',
         editOnGitHub: false,
         showContributors: false,
+        showSidebarEditLink: false,
         repo: {
           url: 'https://github.com/npm/doctornpm',
           defaultBranch: 'main',
+          path: 'docs'
         }
       },
     }
   ],
-  pathPrefix: process.env.PATH_PREFIX || ''
+  pathPrefix: process.env.PREFIX_PATHS ? path.basename(require('../package.json').repository.url) : '',
 }
