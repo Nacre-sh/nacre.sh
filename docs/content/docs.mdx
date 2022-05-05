@@ -1,12 +1,12 @@
 ---
-title: Documentation - Version Alpha
+title: Documentation - Version Beta
 ---
 
 Welcome to the official API reference of Nacre documentation.
 
 ## Builtins
 
-Bultins are commands available natively in Nacre. They don't need to be imported and can be used right away.
+Builtins are commands available natively in Nacre. They don't need to be imported and can be used right away.
 
 ### cat
 
@@ -39,10 +39,10 @@ Example:
 <hr/>
 
 ```js
-cat.truncated(filepath, string): string
+cat.overwrite(filepath, string): string
 ```
 
-Write `string` content in the `filepath` file. The file is created (if it does not exist) or truncated (if it exists).
+Overwrites the content of the file. Create the file if it does not exist.
 
 Returns the content of the file (`string`).
 
@@ -618,6 +618,16 @@ Synchronously creates a directory and the intermediate directories if necessary.
 
 Returns the dirpath of the created directory.
 
+### mv
+
+```js
+mv(itemPath: string, dirPath: string): object
+```
+
+Moves the item from `itemPath` to the directory `dirPath`.
+
+Return the old and the new path of the moved item.
+
 ### pwd
 
 ```js
@@ -626,18 +636,18 @@ pwd(): string
 
 Returns the current working directory. Alias of NodeJS `process.cwd()`.
 
-### sh
+### $ (execute)
 
 **Not available on Windows.**
 
 ```js
-sh(command): string
+$(command: string): string
 ```
 
 Executes the command given in argument and returns its output. Example:
 
 ```js
-> sh('ls -l')
+> $('ls -l')
 'total 88\n' +
   '-rw-r--r--   1 ninroot  staff     87 Mar 24 18:23 README.md\n' +
   '-rwxr--r--   1 ninroot  staff     19 Mar 24 21:34 myscript.sh\n' +
