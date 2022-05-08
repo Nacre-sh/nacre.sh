@@ -1,0 +1,77 @@
+---
+title: Create Your First Command
+---
+
+In this guide, you will learn how to build and run your own command.
+
+## Run from a script file
+
+In your favorite editor, create a `hello-world.js` file.
+
+```js
+function helloWorld () {
+  console.log('Hello World');
+}
+
+// expose the function to be required later
+module.exports = helloWorld;
+```
+
+To run the script file, navigate in the right folder using `cd()` and `ls()`.
+
+```js
+> ls()
+[ 'hello-world.js' ]
+
+> hello = require(path.resolve('hello-world.js'))
+[Function: helloWorld]
+
+> hello()
+Hello World
+undefined
+```
+
+Voilà, the script prints `Hello World` in the stdout. Notice `undefined`, which is the returned value of the function.
+
+## Run from a package
+
+In many cases, scripts are released in a package. A package is a file or directory that is described by a `package.json` file. This file gives information about the package itself such as its name, its authors, its version but also how to interact with it, how to publish it, etc. More information about [how to create a Node.js module here](https://docs.npmjs.com/creating-node-js-modules).
+
+To run a script from a package, you must have it installed at a global level or in the current working directory.
+
+### Global level
+
+```js
+> $('npm install --global hellonacre')
+'\nadded 1 package, and audited 2 packages in 430ms\n\nfound 0 vulnerabilities\n'
+
+> hellonacre()
+Hello World
+undefined
+```
+
+### Working directory
+
+```js
+// init package.json with empty config
+> cat.append('package.json', '{}')
+'{}'
+
+// install hellonacre package in the working directory
+> $('npm install hellonacre')
+'\n' +
+  'added 1 package, and audited 3 packages in 1s\n' +
+  '\n' +
+  '1 package is looking for funding\n' +
+  '  run `npm fund` for details\n' +
+  '\n' +
+  'found 0 vulnerabilities\n'
+
+// check if the package is present in node_modules folder
+> ls('node_modules/')
+[ 'node_modules/.package-lock.json', 'node_modules/hellonacre' ]
+
+> hellonacre()
+Hello World
+undefined
+```
