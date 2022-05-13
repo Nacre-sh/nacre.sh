@@ -12,5 +12,7 @@
   children:
   - title: Try Before the Beta Starts
     url: /blog/2022-03-27-try-before-the-beta-starts
+  - title: Object Oriented Shell for Web Devs
+    url: /blog/2022-04-13-object-oriented-shell-for-web-devs
 - title: Contact
   url: /contact

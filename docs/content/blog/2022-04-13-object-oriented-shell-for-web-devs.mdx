@@ -1,0 +1,70 @@
+---
+title: Object Oriented Shell for Web Devs
+---
+
+<p style="text-align: center;">
+  <img src="https://images.unsplash.com/photo-1589603471201-5b195dc401e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2120&q=80"  alt='shell'/>
+  <a href="https://unsplash.com/@brandon_j369">@brandon_j369</a>
+</p>
+
+If you are familiar with JavaScript, you must have noticed that this language has spread in many domains. JS was initially designed for the web frontends, and quickly became parts of backend systems, with the arrival of NodeJS. Frontend developers can today use their expertise in JavaScript to contribute to the backend as well without having to learn a new programming language. The convergence of language also made it possible to easily connect backend and frontend using a common format: JSON. The simplicity and readability of JSON combined with its native support by JavaScript produced the perfect combo for the growth of the [Web/API we know today](https://twobithistory.org/2017/09/21/the-rise-and-rise-of-json.html).
+
+Meanwhile, Bash, and some variants such as dash, csh, tcsh, zsh, oh-my-zsh, fish, etc., have been around for the last decades, deeply rooted in the world of system administration. Although missing from most of the countless “Most Used Programming Languages” charts, shell (Bash to be more precise) is the language that many, if not all, programmers must use from time to time. It is a unique language in that we all use it, by necessity for minor tasks (installing packages, changing permissions, etc.) although very few are experts (do you remember the syntax of an inline `for` loop?).
+
+## Nacre
+Nacre is an open source project which combines these two worlds to provide an intuitive shell based on JavaScript. The strategy is to attract the web dev community, by offering an alternative to the shells landscape. While Bash (and Bash-like) has proven to be particularly efficient at manipulating text by encouraging the use of _sed_, _grep_, _cut_, _awk_, or format flag, Nacre has been designed to **manipulate objects**. Not just any kind of object but one of the simplest and most common formats for data exchange: **JSON**.
+
+<p style="text-align: center;">
+  <img src="https://user-images.githubusercontent.com/11426226/168281618-1bfaa014-6578-4259-b05a-ffd6b80e4b71.png" alt="Commands returns JSON"/>
+  Commands returns JSON
+</p>
+
+The web community, familiar with JS, will find its feet very quickly without the need to learn a new language. In addition to this ease of adoption, a bunch of tools from the JavaScript ecosystem become instantly available. Some of which are giant projects in themselves:
+
+- [TypeScript](https://www.typescriptlang.org/): make large projects more sustainable by making code more readable and robust within a rich IDE environment and by eliminating bugs quickly;
+- [NPM](https://www.npmjs.com/): leverage years of contribution with thousands of packages available like lodash, chalk or acorn;
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/) enable step by step debugging;
+-  In addition with countless test frameworks, highlighters, linters, and so on.
+
+So far, the product focuses a few specific aspects. First, a minimal set of builtins which facilitate the navigation within the system and provide building blocks for scripting. The usual linux commands are available, such as _cat_, _cd_, _chmod_, _ls_, _mkdir_, _stat_, etc. but embellished with preview and completion.
+
+<p style="text-align: center;">
+  <img src="https://user-images.githubusercontent.com/11426226/160006956-f44a6bf0-96f6-475c-93db-b42f1be230ba.gif"  alt='Use of builtins'/>
+  Use of builtins
+</p>
+
+The second aspect focuses on the auto loading of JavaScript modules. Whether you are writing code or using someone else’s, having an interactive environment lets you play with functions providing the fastest feedback possible. Just by typing the name of the module, Nacre will load it to make it accessible without further effort. Such mechanisms enable web devs to reach a more “[direct connection with a creation](https://youtu.be/PUv66718DII)” in the words of Bret Victor. Also, the auto loading of modules extends the capabilities of Nacre with several hundred thousand modules available via NPM.
+
+<p style="text-align: center;">
+  <img src="https://user-images.githubusercontent.com/11426226/168281640-4d44e114-59e1-4bd6-950c-7e680cad8627.png"  alt='Interactive use of path module with preview'/>
+  Interactive use of path module with preview
+</p>
+
+Finally, Nacre emphasizes on portability by opting for JSON, a format understood by many programmers and that many programming languages can handle. It gives a more UNIX/Linux experience for those who are reluctant to use PowerShell with .NET objects. Here is an example of how you can benefit from Nacre’s commands while remaining in your favorite shell:
+
+```bash
+$ nacre --evaluate "stat('Dockerfile')"
+{
+name: 'Dockerfile',
+type: 'file',
+size: 54,
+createdAt: 2022-02-08T16:38:28.788Z,
+modifiedAt: 2022-02-08T16:38:28.789Z,
+owner: 'arnauddebec',
+group: 'staff'
+}
+
+$ nacre --evaluate "stat('Dockerfile').size"
+54
+```
+
+## Philosophy
+The shell and its alternatives have not changed much since the 60’s compared to the rest of the computer industry. Could you count the number of languages and frameworks that you have seen born (and die) since the beginning of your career? Many alternatives of shell have chosen to be similar syntactically to facilitate their adoption. The success of Bash may be due to the fact that everything [that works with Bash works similarly with sh](https://en.wikipedia.org/wiki/Subset). The benefits of being a superset are innumerable but limit some [r]evolutions, starting with backward compatibility reason.
+
+Compact syntax is widely used in UNIX/Linux shells to speed up the writing of a command line at the expense of its readability. Nacre on the other hand favors a more explicit and readable syntax. To keep the writing smooth, energy has been invested in making the environment ergonomic. For example, `ls -R` is replaced by `ls.recursive()`, a longer version but enhanced by a completion. No more need for the programmer to mentally map flags. Since the advent of [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code), and more generally of the DevOps culture, system commands have a greater chance of ending up in a code base. Readability becomes an increasingly important factor as commands are read, re-read, maintained and operated by multiple contributors on critical infrastructures.
+
+> Readers shouldn’t have to mentally translate your names into other names they already know. […] In general programmers are pretty smart people. Smart people sometimes like to show off their smarts by demonstrating their mental juggling abilities. […] One difference between a smart programmer and a professional programmer is that the professional understands that clarity is king. Professionals use their powers for good and write code that others can understand.
+>
+> Clean Code - Robert C.Martin
+
+Nacre released a Beta version in April 2022 with a [Getting Started guide](../getting-started).
