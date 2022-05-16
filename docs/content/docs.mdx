@@ -686,6 +686,50 @@ Sets the modification and access times of the item located at `itemPath`. If the
 
 Returns the location of the item.
 
+## Commands
+
+### npm
+
+```js
+npm.install(npmPackage: string): NpmPackage;
+```
+
+Install a package and any packages that it depends on. [Details here](https://docs.npmjs.com/cli/v8/commands/npm-install).
+
+Example:
+```js
+> npm.install('chalk')
+{
+  added: 1,
+  removed: 0,
+  changed: 0,
+  name: 'chalk',
+  version: '5.0.1',
+  resolved: 'https://registry.npmjs.org/chalk/-/chalk-5.0.1.tgz'
+}
+```
+
+<hr />
+
+Uninstalls a package, completely removing everything npm installed on its behalf. [Details here](https://docs.npmjs.com/cli/v8/commands/npm-uninstall).
+
+```js
+npm.uninstall(packageName: string): NpmPackage;
+```
+
+Example:
+```js
+> npm.uninstall('chalk')
+{
+  name: 'chalk',
+  version: '5.0.1',
+  resolved: 'https://registry.npmjs.org/chalk/-/chalk-5.0.1.tgz',
+  added: 0,
+  removed: 1,
+  changed: 0
+}
+```
+
 ## Shortcuts
 
 Nacre uses NodeJS readline, some shortcuts are [defined there](https://nodejs.org/api/readline.html) too.
