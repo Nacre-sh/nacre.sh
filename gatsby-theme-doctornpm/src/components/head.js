@@ -17,7 +17,8 @@ function Head(props) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
-      <meta property="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:image" content="https://user-images.githubusercontent.com/11426226/171186597-2b7804df-448a-4652-961e-408c4bc4132b.png" />
       <script async src='https://www.googletagmanager.com/gtag/js?id=UA-221877909-1'></script>
       <script>
         {`
