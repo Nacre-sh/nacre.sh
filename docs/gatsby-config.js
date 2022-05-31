@@ -7,6 +7,7 @@ module.exports = {
     description: 'Intuitive Shell',
     lang: 'en',
     imageUrl: 'https://user-images.githubusercontent.com/11426226/153443520-b4712899-cd91-4474-9a60-c39e8cb2ec7d.svg',
+    imageCard: 'https://user-images.githubusercontent.com/11426226/171186597-2b7804df-448a-4652-961e-408c4bc4132b.png',
   },
   plugins: [
     {
