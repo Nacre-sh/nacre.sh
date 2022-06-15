@@ -1,0 +1,23 @@
+---
+title: Philosophy
+---
+
+Although Nacre is identified with the term _shell_, its philosophy contrasts with most traditional shells. This guide will help you understand where Nacre is and where it is going.
+
+## Aware Environment Over Simple Syntax
+
+Most (if not all) shells implement their own language with the following constraint in mind: how to make the syntax convenient for interactivity? The use of plain languages such as Python or JS has not been explored much as they are a bit too verbose for what is considered acceptable for a shell. Shell syntax has been designed to be simple to write without much default support (weak autocompletion, no automatic closing of braces/quotes, no syntax color, no preview, etc.) making the developer experience more like a simple notepad than an IDE.[^1]
+
+![Screenshot 2022-06-15 at 17 05 40](https://user-images.githubusercontent.com/11426226/173861223-7c552e07-9587-4a9c-8f60-b344e3e9589e.png)
+
+Nacre approaches the problem in the opposite way. It does not aim to create a new language, but relies entirely on JavaScript. The goal is to provide a "smarter" shell with some features you'd expect from an IDE (autocompletion, automatic closing of braces, syntax color, etc.) so that it becomes easy to use JavaScript interactively. Nacre's syntax is more verbose than traditional shells, but writing is guided by a more **aware** environment. Users are encouraged to spend their energy **thinking with concepts rather than finding the right syntax**.
+
+As a side effect of choosing JavaScript, Nacre inherits the tremendous work done within the JS ecosystem (TypeScript, NPM, DevTools, etc.) in addition to having a robust language for Infrastructure as Code.
+
+## Redirection
+
+Traditional shells rely heavily on redirection, which makes them extremely memory and time efficient for processing large amounts of data. NodeJS offers a similar concept with  [streams](https://nodejs.dev/learn/nodejs-streams), but in practice you'll tend to use them very little interactively. Instead of using `|`, you will most likely need to use [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) or [forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) on a small set of objects.
+
+Nacre encourages the manipulation of small structured objects rather than the redirection of raw data.
+
+[^1]: This decision made a lot of sense at the beginning of the shell's life, mainly because of hardware limitations.

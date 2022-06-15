@@ -3,7 +3,9 @@
 - title: Guides
   url: /guides
   children:
-    - title: Create Your First Command
+    - title: Philosophy
+      url: /guides/philosophy
+    - title: Your First Command
       url: /guides/create-first-command
 - title: Documentation
   url: /docs
