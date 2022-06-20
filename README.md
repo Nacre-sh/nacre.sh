@@ -10,7 +10,7 @@ Prerequisites: [Node.js](https://nodejs.org/en/) (16) and [npm 8](https://github
 
 ## Getting Started
 
-1. Clone this repository: `git clone https://github.com/Nacre-sh/nacre`.
+1. Clone this repository: `git clone https://github.com/nacresh/nacre`.
 2. `npm install` in the `nacre.sh` directory.
 3. `npm run develop` to build the site and start a local webserver.
 4. Visit the documentation site in your local instance, http://localhost:8000/
