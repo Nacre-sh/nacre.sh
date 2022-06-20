@@ -611,12 +611,17 @@ Returns the dirpath of the created directory.
 <hr/>
 
 ```js
-mkdir.recursive(dirpath: string): string
+mkdir.intermediate(dirpath: string): string
 ```
 
 Synchronously creates a directory and the intermediate directories if necessary.
 
 Returns the dirpath of the created directory.
+
+Example:
+```js
+mkdir.intermediate('dirs/that/do/not/exist')
+```
 
 ### mv
 
@@ -707,6 +712,21 @@ Example of module importation:
 > l.random();
 ```
 
+<hr/>
+
+```js
+source.resolve(moduleName): string
+```
+
+Use the internal source mechanism to look up the location of the given module, but rather than loading the module, it just returns the resolved filepath.
+
+Returns the filepath of the found module.
+
+Example:
+```js
+> source.resolve('chalk')
+'/Users/arnauddebec/Dev/nacre/node_modules/chalk/source/index.js'
+```
 
 ### touch
 

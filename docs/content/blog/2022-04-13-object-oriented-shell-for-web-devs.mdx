@@ -12,11 +12,11 @@ If you are familiar with JavaScript, you must have noticed that this language ha
 Meanwhile, Bash, and some variants such as dash, csh, tcsh, zsh, oh-my-zsh, fish, etc., have been around for the last decades, deeply rooted in the world of system administration. Although missing from most of the countless “Most Used Programming Languages” charts, shell (Bash to be more precise) is the language that many, if not all, programmers must use from time to time. It is a unique language in that we all use it, by necessity for minor tasks (installing packages, changing permissions, etc.) although very few are experts (do you remember the syntax of an inline `for` loop?).
 
 ## Nacre
-Nacre is an open source project which combines these two worlds to provide an intuitive shell based on JavaScript. The strategy is to attract the web dev community, by offering an alternative to the shells landscape. While Bash (and Bash-like) has proven to be particularly efficient at manipulating text by encouraging the use of _sed_, _grep_, _cut_, _awk_, or format flag, Nacre has been designed to **manipulate objects**. Not just any kind of object but one of the simplest and most common formats for data exchange: **JSON**.
+Nacre is an open source project which combines these two worlds to provide an intuitive shell based on JavaScript. The strategy is to attract the web dev community, by offering an alternative to the shells landscape. While Bash (and Bash-like) has proven to be particularly efficient at manipulating text by encouraging the use of _sed_, _grep_, _cut_, _awk_, or format flag, Nacre has been designed to **manipulate objects**. These objects encourage the use of the simplest and most common formats for data exchange: **JSON**.
 
 <p style="text-align: center;">
   <img src="https://user-images.githubusercontent.com/11426226/168281618-1bfaa014-6578-4259-b05a-ffd6b80e4b71.png" alt="Commands returns JSON"/>
-  Commands returns JSON
+  Commands returns JavaScript Object
 </p>
 
 The web community, familiar with JS, will find its feet very quickly without the need to learn a new language. In addition to this ease of adoption, a bunch of tools from the JavaScript ecosystem become instantly available. Some of which are giant projects in themselves:
@@ -44,17 +44,13 @@ Finally, Nacre emphasizes on portability by opting for JSON, a format understood
 
 ```bash
 $ nacre --evaluate "stat('Dockerfile')"
-{
-name: 'Dockerfile',
-type: 'file',
-size: 54,
-createdAt: 2022-02-08T16:38:28.788Z,
-modifiedAt: 2022-02-08T16:38:28.789Z,
-owner: 'arnauddebec',
-group: 'staff'
-}
+{"name":"Dockerfile","type":"file","size":54,"createdAt":"2022-06-15T15:11:17.041Z","modifiedAt":"2022-06-15T15:11:17.041Z","owner":"arnauddebec","group":"wheel"}
 
 $ nacre --evaluate "stat('Dockerfile').size"
+54
+
+# for those who prefer using jq
+$ nacre --evaluate "stat('/tmp/Dockerfile')" | jq '.size'
 54
 ```
 
